@@ -1,0 +1,31 @@
+nav{
+    background-color: #333;
+    overflow: hidden;
+}
+div .nav{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+    font-size: 2vh;
+}
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+button {
+    background-color: aquamarine;
+    border: 1px solid lightslategrey;
+    color: lightslategray;
+    width: 259.34px;
+    height: 35px;
+    margin: 7px auto 7px 0;
+}
+form input{
+    width: 200px;
+    height: 25px;
+}

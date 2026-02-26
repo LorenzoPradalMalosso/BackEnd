@@ -1,0 +1,13 @@
+<header th:fragment="header">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <nav>
+        <div class="nav">
+            <!-- Link para a Raiz -->
+            <a th:href="@{/}">Home</a>
+            <!-- Link para Sobre, Produto e Contato usando Thymeleaf -->
+             <a th:href="@{/sobre}">Sobre</a>
+             <a th:href="@{/produto}">Produtos</a>
+             <a th:href="@{/contato}">Contato</a>
+        </div>
+    </nav>
+</header>
