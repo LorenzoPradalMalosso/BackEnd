@@ -37,6 +37,6 @@ public class ListaFuncionarioController {
     @RequestMapping(value = "/editarfuncionario/{id}", method = RequestMethod.POST)
     public String updateFuncionario(Funcionario funcionario) {
         fr.save(funcionario);
-        return "redirect:/lista";
+        return "redirect:/listar";
     }
 }
