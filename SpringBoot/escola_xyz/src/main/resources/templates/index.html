@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org/">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <!-- Menu de Estilização -->
+    <div th:insert="~{fragmentos/style}"></div>
+</head>
+<body>
+   <!-- Barra de Menu -->
+   <div th:insert="~{fragmentos/header :: header}"></div>
+
+   <div class="home">
+      <h2>Bem-Vindo a Escola XYZ</h2>
+      <div class="container">
+         <p class="texto">A Escola XYZ tem como objetivo oferecer uma educação de qualidade, 
+         promovendo o desenvolvimento acadêmico, social e humano de seus alunos. 
+         Acreditamos que o aprendizado vai além da sala de aula, incentivando o 
+         pensamento crítico, a responsabilidade e o respeito entre todos.</p>
+      <p class="texto">Este sistema foi desenvolvido para facilitar a gestão escolar e melhorar 
+         a comunicação entre alunos, professores e administradores. Por meio da 
+         plataforma, é possível realizar cadastros, acessar informações acadêmicas 
+         e organizar dados importantes da instituição de forma simples e eficiente.</p>
+      <p class="texto">Nosso compromisso é utilizar a tecnologia para tornar a gestão educacional 
+         mais moderna, organizada e acessível para toda a comunidade escolar.</p>
+      </div>
+   </div>
+
+   <div class="footer">
+      <!-- Footer -->
+   </div>
+
+</body>
+<script th:src="@{js/script.js}"></script>
+</html>
