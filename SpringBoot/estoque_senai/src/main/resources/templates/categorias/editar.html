@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova categoria</title>
+    <title>Editar categoria</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -11,17 +11,17 @@
 
     <main class="pagina centralizado">
         <section class="card card-form">
-            <h1>Nova categoria</h1>
+            <h1>Editar categoria</h1>
             <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
 
-            <form method="post" th:action="@{/categorias/salvar}" class="formulario">
+            <form method="post" th:action="@{/categorias/atualizar/{id}(id=${categoria.id})}" class="formulario">
                 <label for="nome">Nome</label>
-                <input id="nome" name="nome" type="text" maxlength="80" required>
+                <input id="nome" name="nome" type="text" maxlength="80" required th:value="${categoria.nome}">
 
                 <label for="descricao">Descricao</label>
-                <textarea id="descricao" name="descricao" rows="4"></textarea>
+                <textarea id="descricao" name="descricao" rows="4" th:text="${categoria.descricao}"></textarea>
 
-                <button class="botao" type="submit">Salvar categoria</button>
+                <button class="botao" type="submit">Atualizar categoria</button>
             </form>
         </section>
     </main>

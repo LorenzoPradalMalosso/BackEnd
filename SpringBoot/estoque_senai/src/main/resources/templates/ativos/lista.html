@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ativos patrimoniais</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina">
+        <section class="container cabecalho-pagina">
+            <div>
+                <h1>Ativos patrimoniais</h1>
+                <p class="subtitulo">Bens cadastrados com numero de patrimonio e localizacao.</p>
+            </div>
+            <a class="botao" th:href="@{/ativos/novo}">Novo ativo</a>
+        </section>
+
+        <section class="container card">
+            <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
+
+            <div class="tabela-responsiva">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Patrimonio</th>
+                            <th>Categoria</th>
+                            <th>Localizacao</th>
+                            <th>Situacao</th>
+                            <th>Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="ativo : ${ativos}">
+                            <td th:text="${ativo.nome}"></td>
+                            <td th:text="${ativo.numeroPatrimonio}"></td>
+                            <td th:text="${ativo.categoria.nome}"></td>
+                            <td th:text="${ativo.localizacao}"></td>
+                            <td th:text="${ativo.situacao}"></td>
+                            <td class="acoes-tabela">
+                                <a th:href="@{/ativos/editar/{id}(id=${ativo.id})}">Editar</a>
+                                <a th:href="@{/ativos/excluir/{id}(id=${ativo.id})}" onclick="return confirm('Deseja excluir este ativo?')">Excluir</a>
+                            </td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(ativos)}">
+                            <td colspan="6">Nenhum ativo patrimonial cadastrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

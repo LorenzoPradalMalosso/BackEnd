@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar ativo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina centralizado">
+        <section class="card card-form">
+            <h1>Editar ativo patrimonial</h1>
+            <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
+
+            <form method="post" th:action="@{/ativos/atualizar/{id}(id=${ativo.id})}" class="formulario">
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" type="text" maxlength="120" required th:value="${ativo.nome}">
+
+                <label for="descricao">Descricao</label>
+                <textarea id="descricao" name="descricao" rows="4" th:text="${ativo.descricao}"></textarea>
+
+                <label for="numeroPatrimonio">Numero do patrimonio</label>
+                <input id="numeroPatrimonio" name="numeroPatrimonio" type="text" maxlength="50" required th:value="${ativo.numeroPatrimonio}">
+
+                <label for="localizacao">Localizacao</label>
+                <input id="localizacao" name="localizacao" type="text" maxlength="120" required th:value="${ativo.localizacao}">
+
+                <label for="situacao">Situacao</label>
+                <input id="situacao" name="situacao" type="text" maxlength="60" required th:value="${ativo.situacao}">
+
+                <label for="dataCadastro">Data de cadastro</label>
+                <input id="dataCadastro" name="dataCadastro" type="date" th:value="${ativo.dataCadastro}">
+
+                <label for="categoriaId">Categoria</label>
+                <select id="categoriaId" name="categoriaId" required>
+                    <option value="">Selecione</option>
+                    <option th:each="categoria : ${categorias}"
+                        th:value="${categoria.id}"
+                        th:text="${categoria.nome}"
+                        th:selected="${ativo.categoria != null and categoria.id == ativo.categoria.id}">
+                    </option>
+                </select>
+
+                <button class="botao" type="submit">Atualizar ativo</button>
+            </form>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

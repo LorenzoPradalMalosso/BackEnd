@@ -2,47 +2,48 @@ package com.example.estoque_senai.Model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "movimentacoes")
 public class Movimentacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMovimentacao;
+    private Long id;
 
+    @Column(nullable = false, length = 10)
     private String tipo;
+
+    @Column(nullable = false)
     private Integer quantidade;
+
+    @Column(nullable = false)
     private LocalDate data;
-    
+
+    @Column(length = 255)
+    private String observacao;
+
     @ManyToOne
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name = "produto_id", nullable = false)
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn(name = "funcionario_id")
+    @JoinColumn(name = "funcionario_id", nullable = false)
     private Funcionario funcionario;
 
     public Movimentacao() {
     }
 
-    // Construtor com parâmetros
-    public Movimentacao(Long idMovimentacao, String tipo, Integer quantidade, LocalDate data) {
-        this.idMovimentacao = idMovimentacao;
-        this.tipo = tipo;
-        this.quantidade = quantidade;
-        this.data = data;
-    }
-
-
-    // Getters and Setters
-    public Long getIdMovimentacao() {
-        return idMovimentacao;
+    public Long getId() {
+        return id;
     }
 
     public String getTipo() {
@@ -57,6 +58,10 @@ public class Movimentacao {
         return data;
     }
 
+    public String getObservacao() {
+        return observacao;
+    }
+
     public Produto getProduto() {
         return produto;
     }
@@ -65,8 +70,8 @@ public class Movimentacao {
         return funcionario;
     }
 
-    public void setIdMovimentacao(Long idMovimentacao) {
-        this.idMovimentacao = idMovimentacao;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTipo(String tipo) {
@@ -81,6 +86,10 @@ public class Movimentacao {
         this.data = data;
     }
 
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
@@ -88,5 +97,4 @@ public class Movimentacao {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-
 }

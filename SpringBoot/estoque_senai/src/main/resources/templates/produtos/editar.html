@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar material</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina centralizado">
+        <section class="card card-form">
+            <h1>Editar material</h1>
+            <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
+
+            <form method="post" th:action="@{/produtos/atualizar/{id}(id=${produto.id})}" class="formulario">
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" type="text" maxlength="120" required th:value="${produto.nome}">
+
+                <label for="descricao">Descricao</label>
+                <textarea id="descricao" name="descricao" rows="4" th:text="${produto.descricao}"></textarea>
+
+                <label for="preco">Preco</label>
+                <input id="preco" name="preco" type="number" step="0.01" min="0" required th:value="${produto.preco}">
+
+                <label for="quantidade">Quantidade</label>
+                <input id="quantidade" name="quantidade" type="number" min="0" required th:value="${produto.quantidade}">
+
+                <label for="unidadeMedida">Unidade de medida</label>
+                <input id="unidadeMedida" name="unidadeMedida" type="text" maxlength="20" required th:value="${produto.unidadeMedida}">
+
+                <label for="categoriaId">Categoria</label>
+                <select id="categoriaId" name="categoriaId" required>
+                    <option value="">Selecione</option>
+                    <option th:each="categoria : ${categorias}"
+                        th:value="${categoria.id}"
+                        th:text="${categoria.nome}"
+                        th:selected="${produto.categoria != null and categoria.id == produto.categoria.id}">
+                    </option>
+                </select>
+
+                <button class="botao" type="submit">Atualizar material</button>
+            </form>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

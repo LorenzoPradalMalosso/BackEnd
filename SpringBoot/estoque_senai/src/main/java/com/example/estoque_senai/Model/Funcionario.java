@@ -1,87 +1,85 @@
 package com.example.estoque_senai.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import java.util.List;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "funcionarios")
 public class Funcionario {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idFuncionario;
+    private Long id;
 
-    private String nif;
+    @Column(nullable = false)
     private String nome;
-    private String senha;
-    private String cargo;
 
-    @OneToMany(mappedBy = "funcionario")
-    private List<Movimentacao> movimentacoes;
+    @Column(nullable = false, unique = true, length = 20)
+    private String nif;
+
+    @JsonIgnore
+    @Column(nullable = false)
+    private String senha;
+
+    @Column(nullable = false)
+    private boolean ativo = true;
+
+    @Column(nullable = false, length = 80)
+    private String cargo = "funcionario";
 
     public Funcionario() {
     }
 
-    // Construtor com parâmetros
-    public Funcionario(Long idFuncionario, String nif, String nome, String senha, String cargo) {
-        this.idFuncionario = idFuncionario;
-        this.nif = nif;
-        this.nome = nome;
-        this.senha = senha;
-        this.cargo = cargo;
-    }
-
-
-    // Getters and Setters
-    public Long getIdFuncionario() {
-        return idFuncionario;
-    }
-
-    public String getNif() {
-        return nif;
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
         return nome;
     }
 
+    public String getNif() {
+        return nif;
+    }
+
     public String getSenha() {
         return senha;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
     }
 
     public String getCargo() {
         return cargo;
     }
 
-    public List<Movimentacao> getMovimentacoes() {
-        return movimentacoes;
-    }
-
-    public void setIdFuncionario(Long idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }
-
-    public void setNif(String nif) {
-        this.nif = nif;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-
-    public void setMovimentacoes(List<Movimentacao> movimentacoes) {
-        this.movimentacoes = movimentacoes;
-    }
-    
 }

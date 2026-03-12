@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiais</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina">
+        <section class="container cabecalho-pagina">
+            <div>
+                <h1>Materiais em estoque</h1>
+                <p class="subtitulo">Controle simples do inventario da unidade escolar.</p>
+            </div>
+            <a class="botao" th:href="@{/produtos/novo}">Novo material</a>
+        </section>
+
+        <section class="container card">
+            <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
+
+            <div class="tabela-responsiva">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Categoria</th>
+                            <th>Preco</th>
+                            <th>Estoque</th>
+                            <th>Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="produto : ${produtos}">
+                            <td th:text="${produto.nome}"></td>
+                            <td th:text="${produto.categoria.nome}"></td>
+                            <td th:text="${produto.preco}"></td>
+                            <td>
+                                <span th:text="${produto.quantidade}"></span>
+                                <span th:text="${produto.unidadeMedida}"></span>
+                            </td>
+                            <td class="acoes-tabela">
+                                <a th:href="@{/produtos/editar/{id}(id=${produto.id})}">Editar</a>
+                                <a th:href="@{/produtos/excluir/{id}(id=${produto.id})}" onclick="return confirm('Deseja excluir este material?')">Excluir</a>
+                            </td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(produtos)}">
+                            <td colspan="5">Nenhum material cadastrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina">
+        <section class="container cabecalho-pagina">
+            <div>
+                <h1>Dashboard</h1>
+                <p class="subtitulo">Acompanhe o estoque, o patrimonio e o historico mais recente.</p>
+            </div>
+        </section>
+
+        <section class="container grade grade-5">
+            <article class="card resumo">
+                <h2 th:text="${totalProdutos}"></h2>
+                <p>Materiais</p>
+            </article>
+            <article class="card resumo">
+                <h2 th:text="${totalCategorias}"></h2>
+                <p>Categorias</p>
+            </article>
+            <article class="card resumo">
+                <h2 th:text="${totalMovimentacoes}"></h2>
+                <p>Movimentacoes</p>
+            </article>
+            <article class="card resumo">
+                <h2 th:text="${totalAtivos}"></h2>
+                <p>Ativos</p>
+            </article>
+            <article class="card resumo">
+                <h2 th:text="${totalFuncionarios}"></h2>
+                <p>Funcionarios</p>
+            </article>
+        </section>
+
+        <section class="container grade grade-2">
+            <article class="card">
+                <div class="cabecalho-card">
+                    <h2>Inventario atual</h2>
+                    <a th:href="@{/produtos}">Ver todos</a>
+                </div>
+
+                <div class="tabela-responsiva">
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Categoria</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="produto : ${produtos}">
+                                <td th:text="${produto.nome}"></td>
+                                <td th:text="${produto.categoria.nome}"></td>
+                                <td>
+                                    <span th:text="${produto.quantidade}"></span>
+                                    <span th:text="${produto.unidadeMedida}"></span>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(produtos)}">
+                                <td colspan="3">Nenhum material cadastrado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="cabecalho-card">
+                    <h2>Ultimas movimentacoes</h2>
+                    <a th:href="@{/movimentacoes}">Ver historico</a>
+                </div>
+
+                <div class="tabela-responsiva">
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Tipo</th>
+                                <th>Material</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="movimentacao : ${movimentacoes}">
+                                <td th:text="${movimentacao.data}"></td>
+                                <td>
+                                    <span class="badge" th:classappend="${movimentacao.tipo == 'SAIDA'} ? ' badge-erro' : ' badge-sucesso'" th:text="${movimentacao.tipo}"></span>
+                                </td>
+                                <td th:text="${movimentacao.produto.nome}"></td>
+                                <td th:text="${movimentacao.quantidade}"></td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(movimentacoes)}">
+                                <td colspan="4">Nenhuma movimentacao registrada.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

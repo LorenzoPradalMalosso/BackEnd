@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo material</title>
+    <title>Novo ativo</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -11,28 +11,27 @@
 
     <main class="pagina centralizado">
         <section class="card card-form">
-            <h1>Novo material</h1>
+            <h1>Novo ativo patrimonial</h1>
             <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
 
-            <p class="texto-menor" th:if="${#lists.isEmpty(categorias)}">
-                Cadastre uma categoria antes de salvar um material.
-            </p>
-
-            <form method="post" th:action="@{/produtos/salvar}" class="formulario">
+            <form method="post" th:action="@{/ativos/salvar}" class="formulario">
                 <label for="nome">Nome</label>
                 <input id="nome" name="nome" type="text" maxlength="120" required>
 
                 <label for="descricao">Descricao</label>
                 <textarea id="descricao" name="descricao" rows="4"></textarea>
 
-                <label for="preco">Preco</label>
-                <input id="preco" name="preco" type="number" step="0.01" min="0" required>
+                <label for="numeroPatrimonio">Numero do patrimonio</label>
+                <input id="numeroPatrimonio" name="numeroPatrimonio" type="text" maxlength="50" required>
 
-                <label for="quantidade">Quantidade inicial</label>
-                <input id="quantidade" name="quantidade" type="number" min="0" required>
+                <label for="localizacao">Localizacao</label>
+                <input id="localizacao" name="localizacao" type="text" maxlength="120" required>
 
-                <label for="unidadeMedida">Unidade de medida</label>
-                <input id="unidadeMedida" name="unidadeMedida" type="text" maxlength="20" value="un" required>
+                <label for="situacao">Situacao</label>
+                <input id="situacao" name="situacao" type="text" maxlength="60" required>
+
+                <label for="dataCadastro">Data de cadastro</label>
+                <input id="dataCadastro" name="dataCadastro" type="date">
 
                 <label for="categoriaId">Categoria</label>
                 <select id="categoriaId" name="categoriaId" required>
@@ -40,7 +39,7 @@
                     <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
                 </select>
 
-                <button class="botao" type="submit">Salvar material</button>
+                <button class="botao" type="submit">Salvar ativo</button>
             </form>
         </section>
     </main>

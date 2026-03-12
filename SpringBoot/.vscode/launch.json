@@ -19,6 +19,16 @@
             "projectName": "teste_thymeleaf",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EstoqueSenaiApplication<estoque_senai>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.estoque_senai.EstoqueSenaiApplication",
+            "projectName": "estoque_senai",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

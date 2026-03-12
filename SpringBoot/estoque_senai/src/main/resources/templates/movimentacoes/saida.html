@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saida de estoque</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina centralizado">
+        <section class="card card-form">
+            <h1>Registrar saida</h1>
+            <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
+
+            <form method="post" th:action="@{/movimentacoes/saida}" class="formulario">
+                <label for="produtoId">Material</label>
+                <select id="produtoId" name="produtoId" required>
+                    <option value="">Selecione</option>
+                    <option th:each="produto : ${produtos}" th:value="${produto.id}" th:text="${produto.nome}"></option>
+                </select>
+
+                <label for="quantidade">Quantidade</label>
+                <input id="quantidade" name="quantidade" type="number" min="1" required>
+
+                <label for="data">Data</label>
+                <input id="data" name="data" type="date">
+
+                <label for="observacao">Observacao</label>
+                <textarea id="observacao" name="observacao" rows="4"></textarea>
+
+                <button class="botao" type="submit">Registrar saida</button>
+            </form>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

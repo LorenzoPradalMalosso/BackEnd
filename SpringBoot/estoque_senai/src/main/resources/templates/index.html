@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senai estoque</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina">
+        <section class="hero">
+            <div class="container hero-conteudo">
+                <div class="hero-texto">
+                    <span class="etiqueta">Sistema interno</span>
+                    <h1>Gerenciamento de estoque e patrimonio escolar</h1>
+                    <p>
+                        Controle simples de materiais, categorias, entradas, saidas,
+                        funcionarios autorizados e ativos patrimoniais.
+                    </p>
+
+                    <div class="acoes">
+                        <a class="botao" th:href="@{/login}">Entrar no sistema</a>
+                        <a class="botao botao-claro" th:href="@{/cadastro}">Criar conta</a>
+                    </div>
+                </div>
+
+                <div class="card destaque">
+                    <h2>Acesso de teste</h2>
+                    <p><strong>NIF:</strong> 1001</p>
+                    <p><strong>Senha:</strong> 1234</p>
+                    <p class="texto-menor">
+                        O projeto ja inicia com dados basicos para facilitar os testes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container grade grade-3">
+            <article class="card">
+                <h3>Materiais</h3>
+                <p>Cadastro de produtos, categorias e visualizacao do inventario atual.</p>
+            </article>
+
+            <article class="card">
+                <h3>Movimentacoes</h3>
+                <p>Registro de entradas e saidas com validacao simples de estoque.</p>
+            </article>
+
+            <article class="card">
+                <h3>Ativos</h3>
+                <p>Controle dos bens patrimoniais com localizacao e numero de patrimonio.</p>
+            </article>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

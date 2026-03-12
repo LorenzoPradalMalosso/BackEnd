@@ -8,21 +8,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "funcionarios_autenticados")
+public class FuncionarioAutenticado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 80)
+    @Column(nullable = false, length = 120)
     private String nome;
 
-    @Column(length = 255)
-    private String descricao;
+    @Column(nullable = false, unique = true, length = 20)
+    private String nif;
 
-    public Categoria() {
-    }
+    @Column(nullable = false)
+    private boolean ativo = true;
 
     public Long getId() {
         return id;
@@ -32,8 +32,12 @@ public class Categoria {
         return nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNif() {
+        return nif;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
     }
 
     public void setId(Long id) {
@@ -44,7 +48,11 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }

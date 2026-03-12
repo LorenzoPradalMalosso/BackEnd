@@ -1,5 +1,7 @@
 package com.example.estoque_senai.Model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,8 +12,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "produtos")
-public class Produto {
+@Table(name = "ativos_patrimoniais")
+public class AtivoPatrimonial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,20 +25,23 @@ public class Produto {
     @Column(length = 255)
     private String descricao;
 
-    @Column(nullable = false)
-    private Double preco = 0.0;
+    @Column(nullable = false, unique = true, length = 50)
+    private String numeroPatrimonio;
+
+    @Column(nullable = false, length = 120)
+    private String localizacao;
+
+    @Column(nullable = false, length = 60)
+    private String situacao;
 
     @Column(nullable = false)
-    private Integer quantidade = 0;
-
-    @Column(nullable = false, length = 20)
-    private String unidadeMedida = "un";
+    private LocalDate dataCadastro;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
-    public Produto() {
+    public AtivoPatrimonial() {
     }
 
     public Long getId() {
@@ -51,16 +56,20 @@ public class Produto {
         return descricao;
     }
 
-    public Double getPreco() {
-        return preco;
+    public String getNumeroPatrimonio() {
+        return numeroPatrimonio;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public String getLocalizacao() {
+        return localizacao;
     }
 
-    public String getUnidadeMedida() {
-        return unidadeMedida;
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
     }
 
     public Categoria getCategoria() {
@@ -79,16 +88,20 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setNumeroPatrimonio(String numeroPatrimonio) {
+        this.numeroPatrimonio = numeroPatrimonio;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
     }
 
-    public void setUnidadeMedida(String unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public void setCategoria(Categoria categoria) {

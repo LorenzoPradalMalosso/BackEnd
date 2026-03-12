@@ -1,0 +1,5 @@
+<div th:fragment="mensagens">
+    <div th:if="${msg != null}" class="alerta" th:classappend="${classe}">
+        <p th:text="${msg}"></p>
+    </div>
+</div>

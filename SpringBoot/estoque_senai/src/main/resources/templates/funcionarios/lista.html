@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionarios</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos/header :: header}"></div>
+
+    <main class="pagina">
+        <section class="container cabecalho-pagina">
+            <div>
+                <h1>Funcionarios cadastrados</h1>
+                <p class="subtitulo">Controle simples de acesso por NIF e status ativo.</p>
+            </div>
+        </section>
+
+        <section class="container card">
+            <div th:replace="~{fragmentos/mensagens :: mensagens}"></div>
+
+            <div class="tabela-responsiva">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>NIF</th>
+                            <th>Cargo</th>
+                            <th>Status</th>
+                            <th>Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="funcionario : ${funcionarios}">
+                            <td th:text="${funcionario.nome}"></td>
+                            <td th:text="${funcionario.nif}"></td>
+                            <td th:text="${funcionario.cargo}"></td>
+                            <td>
+                                <span class="badge" th:classappend="${funcionario.ativo} ? ' badge-sucesso' : ' badge-erro'" th:text="${funcionario.ativo} ? 'ATIVO' : 'INATIVO'"></span>
+                            </td>
+                            <td class="acoes-tabela">
+                                <a th:href="@{/funcionarios/editar/{id}(id=${funcionario.id})}">Editar</a>
+                            </td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(funcionarios)}">
+                            <td colspan="5">Nenhum funcionario cadastrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+</body>
+</html>

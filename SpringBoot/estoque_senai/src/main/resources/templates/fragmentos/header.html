@@ -1,0 +1,28 @@
+<header th:fragment="header" class="topo">
+    <div class="container topo-conteudo">
+        <a class="marca" th:href="@{/}">
+            <img class="marca-logo" th:src="@{/img/senai-logo.webp}" alt="Logo Senai">
+            <span class="marca-texto">Estoque e Patrimônio</span>
+        </a>
+
+        <nav class="menu">
+            <a th:href="@{/}">Início</a>
+
+            <th:block th:if="${session.funcionarioLogadoId == null}">
+                <a th:href="@{/cadastro}">Cadastro</a>
+                <a class="botao botao-claro" th:href="@{/login}">Login</a>
+            </th:block>
+
+            <th:block th:if="${session.funcionarioLogadoId != null}">
+                <a th:href="@{/dashboard}">Dashboard</a>
+                <a th:href="@{/categorias}">Categorias</a>
+                <a th:href="@{/produtos}">Materiais</a>
+                <a th:href="@{/movimentacoes}">Movimentações</a>
+                <a th:href="@{/ativos}">Ativos</a>
+                <a th:href="@{/funcionarios}">Funcionários</a>
+                <span class="usuario" th:text="${session.funcionarioLogadoNome}"></span>
+                <a class="botao botao-claro" th:href="@{/logout}">Sair</a>
+            </th:block>
+        </nav>
+    </div>
+</header>
