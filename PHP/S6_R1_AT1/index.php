@@ -9,8 +9,7 @@
 
     // Uso do while
     $numero = 1;
-    echo "<strong>Números de 1 a 100 divisíveis por 3 e 5:</strong> <br>";
-    echo "<ul>";
+    echo "<strong>Números de 1 a 100 divisíveis por 3 e 5:</strong><br><ul>";
     while ($numero <= 100) {
         // Verifica se o número é divisível por 3 e 5
         if ($numero % 3 == 0 && $numero % 5 == 0) {
