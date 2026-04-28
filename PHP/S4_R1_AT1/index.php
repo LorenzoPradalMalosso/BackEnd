@@ -3,7 +3,7 @@
     $receita = 12500;
     $custo = 5000;
     $lucro = $receita - $custo;
-
+    // Concatenação
     echo "A empresa teve uma <strong>receita</strong> de: R$".$receita."<br><br>E um <strong>custo</strong> de: R$".$custo."<br><br>Resultando em um <strong>lucro</strong> de: R$ ".$lucro;
 
 
@@ -11,7 +11,7 @@
     $funcionarios = 5000;
     $jovemAprendiz = 1500;
     $funcionariosMaiores = $funcionarios - $jovemAprendiz;
-
+    // Concatenação
     echo "<hr><h4>A empresa possui:</h4><strong>".$funcionariosMaiores."</strong> Funcionários maiores de idade<br><br><strong>".$jovemAprendiz."</strong> Jovens Aprendizes";
 
 
