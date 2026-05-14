@@ -1,0 +1,92 @@
+<section class="bg-danger bg-opacity-10 py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-9">
+
+        <div class="card form-card rounded-4">
+          <div class="card-body p-4 p-md-5">
+
+            <h2 class="text-center mb-3 fw-bold text-danger">Cadastre-se na Pradal</h2>
+            <p class="text-center text-secondary mb-4">
+              Preencha seus dados para começar seus estudos com segurança e confiança.
+            </p>
+
+            <form action="processa.php" method="POST">
+
+              <!-- Campo 1 -->
+              <div class="mb-3">
+                <label for="nome" class="form-label fw-semibold text-danger">Nome completo</label>
+                <input 
+                  type="text" 
+                  class="form-control rounded-3" 
+                  id="nome" 
+                  name="nome" 
+                  placeholder="Digite seu nome"
+                  required>
+              </div>
+
+              <!-- Campo 2 -->
+              <div class="mb-3">
+                <label for="email" class="form-label fw-semibold text-danger">Email</label>
+                <input 
+                  type="email" 
+                  class="form-control rounded-3" 
+                  id="email" 
+                  name="email" 
+                  placeholder="Digite seu email"
+                  required>
+              </div>
+
+              <!-- Campo 3 -->
+              <div class="mb-3">
+                <label for="senha" class="form-label fw-semibold text-danger">Senha</label>
+                <input 
+                  type="password" 
+                  class="form-control rounded-3" 
+                  id="senha" 
+                  name="senha" 
+                  placeholder="Crie uma senha"
+                  required>
+              </div>
+
+              <!-- Campo 4 -->
+              <div class="mb-3">
+                <label for="curso" class="form-label fw-semibold text-danger">Curso de interesse</label>
+                <select 
+                  class="form-select rounded-3" 
+                  id="curso" 
+                  name="curso"
+                  required>
+                  <option value="">Selecione um curso</option>
+                  <option value="programacao">Programação</option>
+                  <option value="design">Design</option>
+                  <option value="ingles">Inglês</option>
+                  <option value="matematica">Matemática</option>
+                </select>
+              </div>
+
+              <!-- Campo 5 -->
+              <div class="mb-4">
+                <label for="mensagem" class="form-label fw-semibold text-danger">Objetivo de aprendizado</label>
+                <textarea 
+                  class="form-control rounded-3" 
+                  id="mensagem" 
+                  name="mensagem" 
+                  rows="4" 
+                  placeholder="Conte o que você deseja aprender"
+                  required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-danger w-100 rounded-pill py-3 fw-semibold">
+                Criar conta
+              </button>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
